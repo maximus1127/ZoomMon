@@ -1,0 +1,26 @@
+{
+  "name": "NewZoomMon",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron .",
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64  --prune=true --out=release-builds",
+    "package-win": "electron-packager . electron-tutorial-app --overwrite --asar=true --platform=win32 --arch=ia32  --prune=false --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Zoom MonitorAlyzer\"",
+    "package-linux": "electron-packager . electron-tutorial-app --overwrite --asar=true --platform=linux --arch=x64  --prune=true --out=release-builds"
+  },
+  "keywords": [],
+  "author": "Max Bourque",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^11.1.1",
+    "electron-packager": "^15.2.0",
+    "ftp-deploy": "^2.4.0"
+  },
+  "dependencies": {
+    "electron": "^11.1.1",
+    "electron-store": "^6.0.1",
+    "ftp-deploy": "^2.4.0"
+  }
+}

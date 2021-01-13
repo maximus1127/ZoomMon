@@ -1,0 +1,120 @@
+
+
+
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Zoom Monitor-alyzer</title>
+
+
+  <style>
+  body{
+    width: 85%;
+    margin: auto;
+  }
+    #info{
+      margin: 15px auto;
+      width: 50%;
+    }
+
+    .full-width{
+      width: 100%;
+      margin: 10px auto;
+    }
+
+
+    #settings{
+      display: none;
+    }
+
+    #settingsButton{
+      position: absolute;
+      left: 0;
+      bottom: 0;
+    }
+
+
+  </style>
+
+</head>
+
+<body>
+  <div id="info">
+    <label for="info">Encounter Number</label>
+    <input type="text" id="encounter" autofocus/>
+    <button onClick="renameFiles()">Save</button>
+  </div>
+
+
+<div id="settingsButton" >
+  <button onClick="toggleSettings()" id="theButton">Settings</button>
+  <input id="password" type="password"/>
+</div>
+
+  <div id="settings">
+    <div class="full-width">
+      <label for="path1">Default Zoom Path</label>
+      <input id="path1" />
+    </div>
+    <div class="full-width">
+      <label for="path2">Local Storage Path</label>
+      <input id="path2" />
+    </div>
+    <div class="full-width">
+      <label for="api">Api Key</label>
+      <input id="api" />
+    </div>
+
+
+  </div>
+
+
+
+
+  <script src="store.js"></script>
+  <script src="getapi.js"></script>
+  <script>
+  var remote = require('electron').remote;
+  var ipcRenderer = require('electron').ipcRenderer;
+
+
+
+    document.addEventListener("DOMContentLoaded", function(event) {
+      getFtpCreds()
+  });
+
+
+    function toggleSettings(){
+      if(document.getElementById('password').value == "aqt"){
+          if(window.getComputedStyle(document.getElementById('settings'), null).display == "none"){
+          document.getElementById('settings').style.display = "block";
+          if(store.get('default_path')){
+            document.getElementById('path1').value = store.get('default_path');
+          }
+          if(store.get('local_path')){
+            document.getElementById('path2').value = store.get('local_path');
+          }
+          if(store.get('api')){
+            document.getElementById('api').value = store.get('api');
+          }
+          document.getElementById('theButton').innerHTML = "Save"
+          } else {
+            document.getElementById('settings').style.display = "none";
+
+            document.getElementById('theButton').innerHTML = "Settings"
+            saveValues();
+            document.getElementById('password').value = ""
+          }
+        }
+      }
+  </script>
+</body>
+</html>
+
+
+
+
+<!-- <button id="addName">Add</button> -->

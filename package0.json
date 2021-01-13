@@ -1,0 +1,21 @@
+{
+  "name": "ZoomMon",
+  "version": "1.0.0",
+  "description": "Manage Zoom Video Files",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+  },
+  "keywords": [],
+  "author": "Max Bourque",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^11.1.1",
+    "ftp-deploy": "^2.4.0"
+  },
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.0",
+    "electron-store": "^6.0.1",
+  },
+
+}
